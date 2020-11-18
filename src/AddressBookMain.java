@@ -14,7 +14,8 @@ public class AddressBookMain {
                 System.out.println("2. Update Person address");
                 System.out.println("3. Delete Person address");
                 System.out.println("4. Display all Address Book entries");
-                System.out.println("5. Exit for Address Book");
+                System.out.println("5. See Address Book Dictionary");
+                System.out.println("6. Exit for Address Book");
                 int choice = Integer.parseInt(sc.nextLine());
                 int index = 0;
                 boolean ans = contact.isEmpty();
@@ -92,8 +93,25 @@ public class AddressBookMain {
                             }
                         }
                         break;
-
                     case 5:
+                        if (ans == true ){
+                            System.out.println("Address Book is Empty. Please enter atleast one entry to display.");
+                        }else {
+
+                            Dictionary addressBookDistionary = new Hashtable((Map) contact);
+                            Enumeration dict = addressBookDistionary.elements();
+                            int keys = 0;
+                            String key1 = "key";
+                            while (dict.hasMoreElements()) {
+                                String key2 = String.valueOf(keys);
+                                String finalKey = key1.concat(key2);
+                                System.out.println("\n DictionaryName" + finalKey + " " + dict.nextElement());
+                                addressBookDistionary.put(finalKey, dict.nextElement());
+                                keys++;
+                            }
+                        }
+                        break;
+                    case 6:
                         isAlive = false;
                         System.out.println("You have chosen Exit option .");
                         System.exit(0);

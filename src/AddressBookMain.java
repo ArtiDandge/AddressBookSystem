@@ -12,7 +12,8 @@ public class AddressBookMain {
                 System.out.println("Address Book Menu");
                 System.out.println("1. Add New Person address");
                 System.out.println("2. Update Person address");
-                System.out.println("3. Exit for Address Book");
+                System.out.println("3. Delete Person address");
+                System.out.println("4. Exit for Address Book");
                 int choice = Integer.parseInt(sc.nextLine());
                 boolean ans = contact.isEmpty();
 
@@ -68,6 +69,16 @@ public class AddressBookMain {
                         }
                         break;
                     case 3:
+                        if (ans == true ){
+                            System.out.println("Address Book is Empty. Please enter atleast one entry to delete");
+                        }else {
+                            System.out.println("Enter id of person(i.e. 0) to delete its contact ?");
+                            int entry = Integer.parseInt(sc.nextLine());
+                            contact.remove(entry);
+                            System.out.println("Contact removed Successfully !");
+                        }
+                        break;
+                    case 4:
                         isAlive = false;
                         System.out.println("You have chosen Exit option .");
                         System.exit(0);

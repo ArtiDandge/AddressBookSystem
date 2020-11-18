@@ -13,8 +13,10 @@ public class AddressBookMain {
                 System.out.println("1. Add New Person address");
                 System.out.println("2. Update Person address");
                 System.out.println("3. Delete Person address");
-                System.out.println("4. Exit for Address Book");
+                System.out.println("4. Display all Address Book entries");
+                System.out.println("5. Exit for Address Book");
                 int choice = Integer.parseInt(sc.nextLine());
+                int index = 0;
                 boolean ans = contact.isEmpty();
 
                 switch (choice) {
@@ -45,7 +47,7 @@ public class AddressBookMain {
                         if (ans == true ){
                             System.out.println("Address Book is Empty. Please enter atleast one entry to update.");
                         }else {
-                            System.out.println("Enter entry index(i.e. 0) to update ?");
+                            System.out.println("Please enter persone id to its update ?");
                             int etr = Integer.parseInt(sc.nextLine());
                             System.out.println("Update First name");
                             person.setFirst_name(sc.nextLine());
@@ -72,13 +74,26 @@ public class AddressBookMain {
                         if (ans == true ){
                             System.out.println("Address Book is Empty. Please enter atleast one entry to delete");
                         }else {
-                            System.out.println("Enter id of person(i.e. 0) to delete its contact ?");
+                            System.out.println("Please enter persone id to delete its contact ?");
                             int entry = Integer.parseInt(sc.nextLine());
                             contact.remove(entry);
                             System.out.println("Contact removed Successfully !");
                         }
                         break;
                     case 4:
+                        Iterator itr = contact.iterator();
+
+                        if (ans == true ){
+                            System.out.println("Address Book is Empty. Please enter atleast one entry to display.");
+                        }else {
+                            while (itr.hasNext()) {
+                                System.out.println("Person Id " + index + " " + itr.next());
+                                index++;
+                            }
+                        }
+                        break;
+
+                    case 5:
                         isAlive = false;
                         System.out.println("You have chosen Exit option .");
                         System.exit(0);
@@ -89,7 +104,7 @@ public class AddressBookMain {
                 }
             } while (isAlive != false);
         }catch (Exception e){
-        System.out.println("Please enter valid inputs. Re-execute the program and ensure that your enter Zip and Phone Number as integer and all other input must be string");
+            System.out.println("Please enter valid inputs. Re-execute the program and ensure that your enter Zip and Phone Number as integer and all other input must be string");
         }
     }
 }
